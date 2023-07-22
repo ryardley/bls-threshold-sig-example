@@ -35,7 +35,7 @@ fn test_threshold_decryption() {
     println!("\t{}", pk.to_hex());
 
     println!("\nI create a message:\n");
-    let msg = b"Hello universe!";
+    let msg = b"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
     let msg_str = from_utf8(msg).unwrap();
     println!("\t{}", msg_str);
 
@@ -54,7 +54,7 @@ fn test_threshold_decryption() {
     let mut shares: BTreeMap<usize, DecryptionShare> = BTreeMap::new();
     shares.insert(0, d1.clone());
     shares.insert(1, d2.clone());
-    // shares.insert(2, d3);
+
     let res = pk_set.decrypt(&shares, &cipher).unwrap();
     let res_str = from_utf8(res.as_slice()).unwrap();
 
