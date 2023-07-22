@@ -6,37 +6,38 @@ This is an example of how to use BLS threshold signatures in rust for encryption
 
 We have three secret keys:
 
-        SecretKeyShare(Scalar(0x3d0cb3b942adafb941b0b5b2f18dc88ae8d4041503ec77f2261f1012d84a1f2c))
-        SecretKeyShare(Scalar(0x516cc06fccd0f51405c35f6cac42de34b5862772e2495369703572cdb6493d41))
-        SecretKeyShare(Scalar(0x65cccd2656f43a6ec9d6092666f7f3de82384ad0c0a62ee0ba4bd58894485b56))
+        SecretKeyShare(Scalar(0x3a3bdffe6a9c3e3c52acb0eb8a57214e6f0171be54b208be83c4354a364f88b7))
+        SecretKeyShare(Scalar(0x230b229a6d9460fea747fb06e9eb71ed693e9a7f8bcb54883334e61de504736a))
+        SecretKeyShare(Scalar(0x0bda6536708c83c0fbe34522497fc28c637bc340c2e4a051e2a596f193b95e1d))
 
 That together form a public key:
 
-        8654a8f9424c9f24fd90889828632c1aa6649db3b93ae4dbef3b4eec844150bb8af1cdf30ec8215aec254947376be891
+        99c429c2a9515edcb47bae5a85f7525ec830955d807b5d29d8cf87d39b71039f82608f9f8499f431b491e599ded0e083
 
 I create a message:
 
-        Hello universe!
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Then encrypt it to the above public key:
 
-        aab27e58b23b1a1f8b813ffcb7b160ae70d1453ca16c81c7865892c12a3eb843b68b8fb13acd75e6daf78a53df6c5b1c8de0b70e8b82810574e03c6c00af1efc2e8a6b91d025da91301c5a0ba16a996c329d8311b8738543286f13a20f1881910ea991489a1d4170494152c8174d28358b8037518b3ca721b738b62088fb909ca7f139cbe225f719758f414a5231e34245c7c24efa245d5c479bf47276d542
+        b85a4a3e25c80f54f330e4db4d3ccd1bf11bd362cfbf0d4051eb418be5baebfca811d462b3e98d06559963b72062f81a99a0f97d21b0ff4ce5044e27e3252a675f414291c97fb42ea19eb67dbd0678ee5d77392154013fb9887443a903a13fb90c675c6869b2e26ec6e5eb7d3ea6fcbed3f72b16343ddb22498d4863f7cec495bd3678f675d691868ed372fd8c1b4cb8a8eaab6ac1c0286803290cc3543624adde96880fec73488caaed48ce1720fb889c667ccd9f0a43ea01a7f0e3380009cfc0d5aa5a445948af44e862266b85988d44125c61f0330190a5791077e00077e3672bc87271502881f60c806cef6ab39e61b4bbc675bfea22f4f19fc4f2450645138813bf94b69c05a015196aa031caa14239effd8c0575510a3ed45786b490e8d7f7b796470dc3d167c391cd0ca7b7a2f2623390f3c1b4ac831ffc597842959fda63202849ec0305a405bd2e47cf82833ef09b22934b4c4ad9c8001aacd8f2f112c151df060741f6b5169ea4b9d7a3632e53c9b6b4e2c89f5a57d98b7cb3945b87e0b682dfd28868679361e36c1e66b1d7357ec6e44ddb5a25ba1739818195a84040e313f32e0e48b1855002b7ae9c393c9fd0972b72226f7c06fc4d54793223258f972376a18bf311685e4ad03963343bd54da9b39f78d00f659cbf7be1a2a66de58dd33b56a1e2f9176b00ec6e3c6267cddd0494e3023902df83bcda0fb9555e00efbed06823168ccde13ec678d9053910ef2f63069443dbdfc954b2382aea8377f82170f49a6547cb03a814ae025bd3aad7b9f76cfee79d66d90eea199d6c3cfca2eb879defe8804580c7e1
 
 I decrypt the message with two of the secret keys giving me these pieces:
 
-        ab38e29d0bdb836989f0dff77e847c04adad5f43b4c9d5f367264287c5a719bba733fe22aa68c15168e937aab7c93977
-        b9a6ad97e4654de9b9cc7c88317a6c466ec6f0c0fe5a0da79956e7103ef26d7963997b6de2f9cc04d78f5bd2db01f04e
+        b9e197424551e5772d822187a2d4689ac633cd5c670198a6b654afba3aaa52b8feaa309814cfb1f6571859e833ab1898
+        a499f16fdedd8747ae2de77d54bdea11739243d2dbd6e9de28f068b5beb6ec14508f4794b3117356a851e1b18cdb4afe
 
 Then reassemble the decryption pieces:
 
-        Hello universe!
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 I can also decrypt the message with one of the other secret keys giving me these pieces:
 
-        ab38e29d0bdb836989f0dff77e847c04adad5f43b4c9d5f367264287c5a719bba733fe22aa68c15168e937aab7c93977
-        b5255f73ea5c873be3ffdcb520b9a51a76f34b217830c7a308e11a91341e02a383f88db8072e941f320f3e9c8701d369
+        b9e197424551e5772d822187a2d4689ac633cd5c670198a6b654afba3aaa52b8feaa309814cfb1f6571859e833ab1898
+        8d9e059b5bfc10c8866d563b9f3917d3f31cae905be493aa4736e8b4e91b4393e1639107abb3f74b59cc524a78da6bb0
 
 Then reassemble the decryption pieces:
 
-        Hello universe!
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 ```
