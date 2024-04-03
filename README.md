@@ -1,4 +1,4 @@
-# BLS Signature example
+# BLS Threshold Encryption example
 
 This is an example of how to use BLS threshold signatures in rust for encryption and decryption.
 
